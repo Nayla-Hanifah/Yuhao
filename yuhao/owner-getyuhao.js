@@ -12,7 +12,7 @@ ${listPlugins.map(v => v).join('\n').trim()}
 }
 handler.help = ['getplugin'].map(v => v + ' [filename]')
 handler.tags = ['owner']
-handler.command = /^(getplugin|get ?plugin|gp)$/i
+handler.command = /^(getplugin|get ?yuhao|gy)$/i
 
 handler.rowner = true
 
