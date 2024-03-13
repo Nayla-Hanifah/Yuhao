@@ -4,7 +4,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
   if (!text) throw `uhm.. teksnya mana?\n\npenggunaan:\n${usedPrefix + command} <teks>\n\ncontoh:\n${usedPrefix + command} menu`;
 
-  if (command === 'sfp') {
+  if (command === 'sfy') {
 
     if (!m.quoted.text) throw `balas pesan nya!`;
 
@@ -14,7 +14,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
     m.reply(`tersimpan di ${path}`);
 
-  } else if (command === 'dfp') {
+  } else if (command === 'dfy') {
 
     let path = `yuhao/${text}.js`;
 
@@ -28,11 +28,11 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
 };
 
-handler.help = ['sfp', 'dfp'].map(v => v + ' <teks>');
+handler.help = ['sfy', 'dfy'].map(v => v + ' <teks>');
 
 handler.tags = ['owner'];
 
-handler.command = /^(sfp|dfp)$/i;
+handler.command = /^(sfy|dfy)$/i;
 
 handler.rowner = true;
 
