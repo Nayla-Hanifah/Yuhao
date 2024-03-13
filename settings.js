@@ -32,8 +32,8 @@ global.bottime = `ᴛɪᴍᴇ: ${wktuwib}`
 // kalo ga punya ketik "-" atau biarin aja biar ada creditsnya :v
 global.sig = 'https://instagram.com' //Link Instagrammu
 global.sgh = 'https://github.com/Nayla-Hanifah' //Link Githubmu
-global.sgc = 'https://chat.whatsapp.com/ENK1zhL0GWWFRE4sMPEMUz'
-global.sch = 'https://whatsapp.com/channel/0029VaEkiXhD38CPyrDyQK3c' //Isi Pake Link Saluran Wa mu Kalo Gada Biarin aja
+global.sgc = 'https://chat.whatsapp.com/IrFeKGgeIJ46m6IIGogYKc' //link Group mu
+global.sch = 'https://whatsapp.com/channel/0029VaEkiXhD38CPyrDyQK3c' //Link Saluran Wa mu Kalo Gada Biarin aja
 global.snh = 'https://nhentai.net/g/HaramTod🗿' //Hmmm, Ini boleh kalian isi terserah :v
         
 /*============== STAFF ==============*/
