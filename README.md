@@ -13,3 +13,25 @@
 </p>
 
 [![GROUP BOT](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/IrFeKGgeIJ46m6IIGogYKc)
+> **GROUP BOT**
+
+
+## UNTUK PENGGUNA WINDOWS/VPS/RDP
+
+* Unduh & Instal Git [`Klik Disini`](https://git-scm.com/downloads)
+* Unduh & Instal NodeJS [`Klik Disini`](https://nodejs.org/en/download)
+* Unduh & Instal FFmpeg [`Klik Disini`](https://ffmpeg.org/download.html) (**Jangan Lupa Tambahkan FFmpeg ke variabel lingkungan PATH**)
+* Unduh & Instal ImageMagick [`Klik Disini`](https://imagemagick.org/script/download.php)
+
+```javascript
+git clone https://github.com/Nayla-Hanifah/Yuhao
+cd Yuhao
+npm i
+npm start
+```
+```javascript
+// to get pairing code //
+
+node index.js --pairing
+
+```
