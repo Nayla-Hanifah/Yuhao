@@ -1,7 +1,7 @@
 {
-    "name": "Betabotz",
-    "version": "1.0.0",
-    "description": "Customizable WhatsApp Bot",
+    "name": "Huo Yuhao",
+    "version": "0.0.1",
+    "description": "simple WhatsApp bot",
     "depecrated": false,
     "main": "index.js",
     "directories": {
@@ -22,18 +22,19 @@
         "wabot-aq",
         "multi-device",
         "betabotz",
+        "Yuhao-bot",
         "baileys"
     ],
-    "homepage": "https://github.com/ERLANRAHMAT/BETABOTZ-MD2",
+    "homepage": "https://github.com/Nayla-Hanifah/Yuhao",
     "author": {
-        "name": "betabotz"
+        "name": "Nayla Hanifah"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ERLANRAHMAT/BETABOTZ-MD2.git"
+        "url": "git+https://github.com/Nayla-Hanifah/Yuhao.git"
     },
     "bugs": {
-        "url": "https://github.com/ERLANRAHMAT/BETABOTZ-MD2/issues"
+        "url": "https://github.com/Nayla-Hanifah/Yuhao/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
