@@ -3,7 +3,7 @@ const { join } = require('path');
 
 let handler = async (m, { conn, usedPrefix, args }) => {
 
-  const sesi = ['./sessions'];
+  const sesi = ['./YuhaoSesi'];
   const array = [];
 
   sesi.forEach(dirname => {
