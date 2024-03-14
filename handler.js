@@ -805,19 +805,15 @@ global.dfail = (type, m, conn) => {
         unreg: '*ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ʀᴇɢɪsᴛᴇʀᴇᴅ ʏᴇᴛ* • ᴋᴇᴛɪᴋ  .daftar ᴜɴᴛᴜᴋ ʙɪsᴀ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ғɪᴛᴜʀ ɪɴɪ', 
         restrict: '*ʀᴇsᴛʀɪᴄᴛ* • ʀᴇsᴛʀɪᴄᴛ ʙᴇʟᴜᴍ ᴅɪɴʏᴀʟᴀᴋᴀɴ ᴅɪᴄʜᴀᴛ ɪɴɪ',
     }[type]
-    if (msg) return conn.sendMessage(m.chat, {
-text: msg,
-contextInfo: { 
-forwardingScore: 2024,
-isForwarded: true,
-externalAdReply: {
-title: 'ACCESS DENIED',
-body: "",
-thumbnailUrl: "https://telegra.ph/file/157d98917b66f5e7a6bc7.jpg",
-sourceUrl: sch,
-mediaType: 1,
-renderLargerThumbnail: true,
-}}}, { quoted: m})
+    const message = { 
+            document: { url: global.thumb },
+            jpegThumbnail: await conn.resize('https://telegra.ph/file/79aae89c91a07089e2eb8.jpg', 145, 55),
+            fileName: global.namedoc,
+            mimetype: global.doc,
+            fileLength: global.fsizedoc,
+            pageCount: global.fpagedoc,
+            caption: msg, }       
+    if (msg) return await conn.sendMessage(m.chat, message, { quoted: m })
 }
 
 let fs = require('fs')
