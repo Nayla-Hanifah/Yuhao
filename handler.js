@@ -807,11 +807,11 @@ global.dfail = (type, m, conn) => {
     }[type]
     const message = { 
             document: { url: global.thumb },
-            jpegThumbnail: await conn.resize('https://telegra.ph/file/79aae89c91a07089e2eb8.jpg', 145, 55),
+            jpegThumbnail: await conn.resize(fla+'ACCESS DENIED', 480, 260),
             fileName: global.namedoc,
             mimetype: global.doc,
-            fileLength: global.fsizedoc,
-            pageCount: global.fpagedoc,
+            fileLength: null,
+            pageCount: null,
             caption: msg, }       
     if (msg) return await conn.sendMessage(m.chat, message, { quoted: m })
 }
