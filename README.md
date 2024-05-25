@@ -17,6 +17,7 @@ Yuhao WhatsApp Bot is a versatile chatbot developed for WhatsApp platform. It is
 - AI
 - Downloader 
 - Internet
+- ETC
 
 Feel free to contribute to this project and enhance its capabilities!
 
