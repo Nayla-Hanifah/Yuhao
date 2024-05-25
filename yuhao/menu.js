@@ -33,10 +33,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'ai', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
     'main': 'UTAMA',
+    'ai': 'OPENAI',
     'game': 'Game',
     'rpg': 'RPG',
     'xp': 'Exp & Limit',
@@ -63,6 +64,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'game') tags = {
     'game': 'Game',
     'rpg': 'RPG'
+  }
+  if (teks == 'ai') tags = { 
+    'ai': 'OPENAI'
   }
   if (teks == 'xp') tags = {
     'xp': 'Exp & Limit'
@@ -188,6 +192,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
         title: 'List Menu ',
         rows: [
           { "header": "", "title": 'Semua Perintah', "description": "", "id": `${_p + command} all` },
+          { "header": "", "title": 'AI', "description": "", "id": `${_p + command} ai` },
           { "header": "", "title": 'Game', "description": "", "id": `${_p + command} game` },
           { "header": "", "title": 'Rpg', "description": "", "id": `${_p + command} rpg` },
           { "header": "", "title": 'XP', "description": "", "id": `${_p + command} xp` },
@@ -210,6 +215,12 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
           { "header": "", "title": 'Info', "description": "", "id": `${_p +command} info` },
           { "header": "", "title": 'Tanpa Kategori', "description": "", "id": `${_p + command} tanpakategori` },
           { "header": "", "title": 'Owner', "description": "", "id": `${_p + command} owner` },
+        ]       
+      }, {
+      'title': 'MAIN ',
+        rows: [
+          { "header": "", "title": 'Creator', "description": "Nomer pengembang BOT", "id": `${_p}owner` },
+          { "header": "", "title": 'Speed', "description": "menampilkan kecepatan respon BOT", "id": `${_p}ping` },
         ]
       }
     ]
@@ -345,7 +356,7 @@ JSON.stringify({
 }
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
-handler.command = /^(m(enu)?|help|\?)$/i
+handler.command = /^(m(enu)?|help)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
@@ -385,4 +396,4 @@ function ucapan() {
     res = "Selamat malam"
   }
   return res
-			 }
+	    }
