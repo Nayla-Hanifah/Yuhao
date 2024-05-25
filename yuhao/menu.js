@@ -1,5 +1,6 @@
 let levelling = require('../lib/levelling')
 let fs = require('fs')
+let { generateWAMessageFromContent } = require('@whiskeysockets/baileys')
 let path = require('path')
 let fetch = require('node-fetch')
 let moment = require('moment-timezone')
@@ -17,7 +18,7 @@ const defaultMenu = {
 ┆ *Hari* : %week %weton
 ┆ *Tanggal* : %date
 ┆ *Tanggal Islam* : %dateIslamic
-┆ *Waktu* : %wib
+┆ *Waktu* : %time
 ┗────────────────┈ꕥ
 %readmore`.trim(),
   header: '❐   *「 %category 」*',
@@ -158,7 +159,6 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       minute: 'numeric',
       second: 'numeric'
     })
-    const wib = moment.tz('Asia/Jakarta').format("HH:mm:ss")
     let _uptime = process.uptime() * 1000
     let _muptime
     if (process.send) {
@@ -183,11 +183,41 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       }
     })
     if (teks == '404') {
+      let sections = [
+      {
+        title: 'List Menu ',
+        rows: [
+          { "header": "", "title": 'Semua Perintah', "description": "", "id": `${_p + command} all` },
+          { "header": "", "title": 'Game', "description": "", "id": `${_p + command} game` },
+          { "header": "", "title": 'Rpg', "description": "", "id": `${_p + command} rpg` },
+          { "header": "", "title": 'XP', "description": "", "id": `${_p + command} xp` },
+          { "header": "", "title": 'Stiker', "description": "", "id": `${_p + command} stiker` },
+          { "header": "", "title": 'Kerang Ajaib', "description": "", "id": `${_p + command} kerangajaib` },
+          { "header": "", "title": 'Quotes', "description": "", "id": `${_p + command} quotes` },
+          { "header": "", "title": 'Grup', "description": "", "id": `${_p + command} grup` },
+          { "header": "", "title": 'Premium', "description": "", "id": `${_p + command} premium` },
+          { "header": "", "title": 'Internet', "description": "", "id": `${_p + command} internet` },
+          { "header": "", "title": 'Anonymous', "description": "", "id": `${_p + command} anonymous` },
+          { "header": "", "title": 'Nulis & Logo', "description": "", "id": `${_p + command} nulis` },
+          { "header": "", "title": 'Downloader', "description": "", "id": `${_p + command} downloader` },
+          { "header": "", "title": 'Tools', "description": "", "id": `${_p + command} tools` },
+          { "header": "", "title": 'Fun', "description": "", "id": `${_p + command} fun`},
+          { "header": "", "title": 'Database', "description": "", "id": `${_p + command} database` },
+          { "header": "", "title": 'Vote & Absen', "description": "", "id": `${_p + command} vote` },
+          { "header": "", "title": "Al-Qur\'an", "description": "", "id": `${_p + command} quran` },
+          { "header": "", "title": 'Pengubah Suara', "description": "", "id": `${_p + command} audio` },
+          { "header": "", "title": 'Jadi Bot', "description": "", "id": `${_p + command} jadibot` },
+          { "header": "", "title": 'Info', "description": "", "id": `${_p +command} info` },
+          { "header": "", "title": 'Tanpa Kategori', "description": "", "id": `${_p + command} tanpakategori` },
+          { "header": "", "title": 'Owner', "description": "", "id": `${_p + command} owner` },
+        ]
+      }
+    ]
       let judul = `✧────···[ Dashboard ]···────✧
 *${ucapan()} ${m.name}*
 ╭━━━━━━━━━━━━━━━━┈─✧
 ┴
-│⬡ Aktif selama ${uptime}
+│⬡ Aktif selama ${muptime}
 │⬡ Prefix : [ ${_p} ]
 │⬡ *${Object.keys(global.db.data.users).length}* Pengguna
 │⬡ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
@@ -201,7 +231,47 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 │ ʙᴇʀɪ ᴊᴇᴅᴀ ʏᴀʜ ᴋᴀᴋ ^ω^
 ╰━━━━━━━━━━━━━━━━┈─◂`
       
-    const _0x4eb99f=_0x4d45;(function(_0x410a60,_0x619b1f){const _0x26313b=_0x4d45,_0x57449=_0x410a60();while(!![]){try{const _0x377c39=parseInt(_0x26313b(0x12d))/0x1*(-parseInt(_0x26313b(0x139))/0x2)+parseInt(_0x26313b(0x117))/0x3+parseInt(_0x26313b(0x129))/0x4*(-parseInt(_0x26313b(0x12b))/0x5)+parseInt(_0x26313b(0x122))/0x6+-parseInt(_0x26313b(0x108))/0x7+parseInt(_0x26313b(0x11c))/0x8*(-parseInt(_0x26313b(0x11e))/0x9)+-parseInt(_0x26313b(0x114))/0xa*(-parseInt(_0x26313b(0x123))/0xb);if(_0x377c39===_0x619b1f)break;else _0x57449['push'](_0x57449['shift']());}catch(_0x4a86f4){_0x57449['push'](_0x57449['shift']());}}}(_0x3e7d,0x5fc1a));let msg={'viewOnceMessage':{'message':{'messageContextInfo':{'deviceListMetadata':{},'deviceListMetadataVersion':0x2},'interactiveMessage':{'body':{'text':judul},'footer':{'text':wm},'header':{'title':'','subtitle':'','hasMediaAttachment':![]},'nativeFlowMessage':{'buttons':[{'name':_0x4eb99f(0x135),'buttonParamsJson':JSON[_0x4eb99f(0x12c)]({'title':_0x4eb99f(0x128),'sections':[{'title':_0x4eb99f(0x115),'rows':[{'header':'','title':_0x4eb99f(0x137),'description':'','id':_p+command+_0x4eb99f(0x12f)},{'header':'','title':'Game','description':'','id':_p+command+_0x4eb99f(0x11b)},{'header':'','title':'Rpg','description':'','id':_p+command+_0x4eb99f(0x126)},{'header':'','title':'XP','description':'','id':_p+command+'\x20xp'},{'header':'','title':_0x4eb99f(0x109),'description':'','id':_p+command+_0x4eb99f(0x11a)},{'header':'','title':_0x4eb99f(0x12a),'description':'','id':_p+command+_0x4eb99f(0x125)},{'header':'','title':_0x4eb99f(0x11d),'description':'','id':_p+command+'\x20quotes'},{'header':'','title':_0x4eb99f(0x121),'description':'','id':_p+command+'\x20grup'},{'header':'','title':_0x4eb99f(0x136),'description':'','id':_p+command+'\x20premium'},{'header':'','title':_0x4eb99f(0x111),'description':'','id':_p+command+_0x4eb99f(0x132)},{'header':'','title':_0x4eb99f(0x138),'description':'','id':_p+command+_0x4eb99f(0x124)},{'header':'','title':'Nulis\x20&\x20Logo','description':'','id':_p+command+_0x4eb99f(0x10e)},{'header':'','title':'Downloader','description':'','id':_p+command+_0x4eb99f(0x134)},{'header':'','title':_0x4eb99f(0x12e),'description':'','id':_p+command+_0x4eb99f(0x116)},{'header':'','title':_0x4eb99f(0x10a),'description':'','id':_p+command+'\x20fun'},{'header':'','title':_0x4eb99f(0x113),'description':'','id':_p+command+_0x4eb99f(0x10b)},{'header':'','title':_0x4eb99f(0x112),'description':'','id':_p+command+_0x4eb99f(0x110)},{'header':'','title':'Al-Qur\x27an','description':'','id':_p+command+'\x20quran'},{'header':'','title':_0x4eb99f(0x130),'description':'','id':_p+command+_0x4eb99f(0x131)},{'header':'','title':_0x4eb99f(0x10d),'description':'','id':_p+command+_0x4eb99f(0x10f)},{'header':'','title':'Info','description':'','id':_p+command+_0x4eb99f(0x11f)},{'header':'','title':_0x4eb99f(0x133),'description':'','id':_p+command+_0x4eb99f(0x120)},{'header':'','title':'Owner','description':'','id':_p+command+_0x4eb99f(0x10c)}]}]})}]},'contextInfo':{'quotedMessage':m['message'],'participant':m[_0x4eb99f(0x118)],...m[_0x4eb99f(0x127)]}}}}};function _0x3e7d(){const _0x20af38=['\x20jadibot','\x20vote','Internet','Vote\x20&\x20Absen','Database','10mkHxiI','List\x20Menu\x20','\x20tools','2325729KbsiIm','sender','chat','\x20stiker','\x20game','24NsbIAI','Quotes','595566ujQvMo','\x20info','\x20tanpakategori','Grup','1237026QaLcfK','4529525kIVDkc','\x20anonymous','\x20kerangajaib','\x20rpg','key','Klik\x20Disini\x20⎙','4972lCQKBk','Kerang\x20Ajaib','1315qRbvIH','stringify','61wdHayF','Tools','\x20all','Pengubah\x20Suara','\x20audio','\x20internet','Tanpa\x20Kategori','\x20downloader','single_select','Premium','Semua\x20Perintah','Anonymous','9626LFhSKl','1273629IReWAE','Stiker','Fun','\x20database','\x20owner','Jadi\x20Bot','\x20nulis'];_0x3e7d=function(){return _0x20af38;};return _0x3e7d();}function _0x4d45(_0x31690a,_0x2e84e8){const _0x3e7de7=_0x3e7d();return _0x4d45=function(_0x4d455d,_0x34130a){_0x4d455d=_0x4d455d-0x108;let _0x324a43=_0x3e7de7[_0x4d455d];return _0x324a43;},_0x4d45(_0x31690a,_0x2e84e8);}return conn['relayMessage'](m[_0x4eb99f(0x119)],msg,{});;
+    let msg = {
+		viewOnceMessage: {
+			message: {
+				messageContextInfo: {
+					deviceListMetadata: {},
+					deviceListMetadataVersion: 2,
+				},
+				interactiveMessage: {
+					body: {
+						text: judul,
+					},
+					footer: {
+						text: wm,
+					},
+					header: {
+						title: '',
+						subtitle: '',
+						hasMediaAttachment: false
+					},
+					nativeFlowMessage: {
+						buttons: [
+							{
+              "name": "single_select",
+              "buttonParamsJson":
+JSON.stringify({
+ "title": "Klik Disini ⎙",
+"sections": sections
+              })              
+            } 
+						],
+					},
+					contextInfo: {
+						quotedMessage: m.message,
+						participant: m.sender,
+						...m.key
+					}
+				},
+			},
+		},
+	};
+    return conn.relayMessage(m.chat, msg, { });
     
     }
 
@@ -249,24 +319,25 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       totalexp: exp,
       xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      level, limit, name, umur, money, age, weton, week, date, dateIslamic, time, wib, totalreg, rtotalreg, role,
+      level, limit, name, umur, money, age, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    conn.relayMessage(m.chat, 
-{ liveLocationMessage: {
-  degreesLatitude: 35.685506276233525,
-  degreesLongitude: 139.75270667105852,
-  accuracyInMeters: 0,
-degreesClockwiseFromMagneticNorth: 2,
-caption: text,
-sequenceNumber: 2,
-timeOffset: 3,
-contextInfo: {
+    await conn.relayMessage(m.chat,  {
+    requestPaymentMessage: {
+      currencyCodeIso4217: 'IDR',
+      amount1000: '25',
+      requestFrom: '0@s.whatsapp.net',
+      noteMessage: {
+      extendedTextMessage: {
+      text: text,
+      contextInfo: {
 						quotedMessage: m.message,
 						participant: m.sender,
-						...m.key
-}}}, {}).catch(_ => _)
+						...m.key,
+      externalAdReply: {
+      showAdAttribution: true
+      }}}}}}, {})
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
@@ -314,7 +385,4 @@ function ucapan() {
     res = "Selamat malam"
   }
   return res
-}  res = "Selamat malam"
-  }
-  return res
-	  
+			 }
