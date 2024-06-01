@@ -340,9 +340,9 @@ JSON.stringify({
     throw e
   }
 }
-handler.help = ['menu', 'help', '?']
+handler.help = ['menu', 'help']
 handler.tags = ['main']
-handler.command = /^(m(enu2)?|help2)$/i
+handler.command = /^(m(enu)?|help)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
