@@ -17,14 +17,10 @@ handler.all = async function (m) {
 		
 		// Module 
 		global.fetch = require('node-fetch')
+		global.baileys = require('@whiskeysockets/baileys')
+		global.axios = require('axios')
 		
 		const _uptime = process.uptime() * 1000
-        
-		// Ini untuk command crator/owner
-		global.kontak2 = [
-         [owner[0], await this.getName(owner[0] + '@s.whatsapp.net'), 'ᴅᴇᴠᴇʟᴏᴩᴇʀ ʙᴏᴛ', 'Nothing', true],
-         [owner[1], await this.getName(owner[1] + '@s.whatsapp.net'), 'ᴅᴇᴠᴇʟᴏᴩᴇʀ ʙᴏᴛ', 'Nothing', true], // Kalo mau di tambah tinggal copy 1baris ini di tempel di bawahnya trs di edit dikit!
-        ]
         
 		// ucapan ini mah
 		global.ucapan = ucapan()
@@ -34,10 +30,9 @@ handler.all = async function (m) {
         let flaaa = JSON.parse(fs.readFileSync('./nayla/fla.json'))
         global.fla = pickRandom(flaaa)
         let res = await fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/anime/neko.txt')
-let txt = await res.text()
-
-let arr = txt.split('\n')
-let cita = arr[Math.floor(Math.random() * arr.length)]
+        let txt = await res.text()
+        let arr = txt.split('\n')
+        let cita = arr[Math.floor(Math.random() * arr.length)]
         global.imgg = cita
         let waifu = JSON.parse(fs.readFileSync('./nayla/waifu.json'))
         global.img = pickRandom(waifu)
@@ -52,7 +47,7 @@ let cita = arr[Math.floor(Math.random() * arr.length)]
     forwardingScore: 12,
     isForwarded: true,
     forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363200128081056@newsletter',
+      newsletterJid: '120363294442288954@newsletter',
       serverMessageId: null,
       newsletterName: titlebot,
     },
@@ -146,4 +141,4 @@ function ucapan() {
 
 function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
-		}
+			       }
