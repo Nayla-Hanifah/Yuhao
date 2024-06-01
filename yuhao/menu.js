@@ -33,33 +33,25 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'ai', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'ai', 'internet', 'fun', 'kerang', 'tools', 'info', 'xp', 'game', 'anime', 'downloader', 'group', 'owner', 'sticker', 'advanced', 'tanpakategori']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
-    'main': 'UTAMA',
-    'ai': 'OPENAI',
-    'game': 'Game',
-    'rpg': 'RPG',
-    'xp': 'Exp & Limit',
-    'sticker': 'Stiker',
-    'kerang': 'Kerang Ajaib',
-    'quotes': 'Quotes',
-    'group': 'Grup',
-    'premium': 'Premium',
-    'internet': 'Internet',
-    'anonymous': 'Anonymous Chat',
-    'nulis': 'MagerNulis & Logo',
-    'downloader': 'Downloader',
-    'tools': 'Tools',
-    'fun': 'Fun',
-    'database': 'Database',
-    'vote': 'Voting',
-    'absen': 'Absen',
-    'quran': 'Al Qur\'an',
-    'audio': 'Pengubah Suara',
-    'jadibot': 'Jadi Bot',
-    'info': 'Info',
-    '': 'Tanpa Kategori',
+'main': 'Main',
+'ai': 'Openai',
+'internet': 'Internet',
+'fun': 'Fun',
+'kerang': 'Kerang Ajaib',
+'tools': 'Tools',
+'info': 'Info',
+'xp': 'Exp',
+'game': 'Game',
+'anime': 'Anime',
+'downloader': 'Downloader',
+'group': 'Group',
+'owner': 'Creator',
+'sticker': 'Sticker',
+'advanced': 'Advanced',
+'': 'No Catagory'
   }
   if (teks == 'game') tags = {
     'game': 'Game',
@@ -68,32 +60,23 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'ai') tags = { 
     'ai': 'OPENAI'
   }
+  if (teks == 'anime') tags = { 
+    'anime': 'Anime'
+  }
   if (teks == 'xp') tags = {
     'xp': 'Exp & Limit'
   }
   if (teks == 'stiker') tags = {
     'sticker': 'Stiker'
   }
-  if (teks == 'kerangajaib') tags = {
+  if (teks == 'keranga') tags = {
     'kerang': 'Kerang Ajaib'
-  }
-  if (teks == 'quotes') tags = {
-    'quotes': 'Quotes'
   }
   if (teks == 'grup') tags = {
     'group': 'Grup'
   }
-  if (teks == 'premium') tags = {
-    'premium': 'Premium'
-  }
   if (teks == 'internet') tags = {
     'internet': 'Internet'
-  }
-  if (teks == 'anonymous') tags = {
-    'anonymous': 'Anonymous Chat'
-  }
-  if (teks == 'nulis') tags = {
-    'nulis': 'MagerNulis & Logo'
   }
   if (teks == 'downloader') tags = {
     'downloader': 'Downloader'
@@ -104,22 +87,6 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'fun') tags = {
     'fun': 'Fun'
   }
-  if (teks == 'database') tags = {
-    'database': 'Database'
-  }
-  if (teks == 'vote') tags = {
-    'vote': 'Voting',
-    'absen': 'Absen'
-  }
-  if (teks == 'quran') tags = {
-    'quran': 'Al Qur\'an'
-  }
-  if (teks == 'audio') tags = {
-    'audio': 'Pengubah Suara'
-  }
-  if (teks == 'jadibot') tags = {
-    'jadibot': 'Jadi Bot'
-  }
   if (teks == 'info') tags = {
     'info': 'Info'
   }
@@ -128,7 +95,6 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   }
   if (teks == 'owner') tags = {
     'owner': 'Owner',
-    'host': 'Host',
     'advanced': 'Advanced'
   }
 
@@ -195,23 +161,15 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
           { "header": "", "title": 'AI', "description": "", "id": `${_p + command} ai` },
           { "header": "", "title": 'Game', "description": "", "id": `${_p + command} game` },
           { "header": "", "title": 'Rpg', "description": "", "id": `${_p + command} rpg` },
-          { "header": "", "title": 'XP', "description": "", "id": `${_p + command} xp` },
+          { "header": "", "title": 'Anime', "description": "", "id": `${_p + command} anime` },
+	  { "header": "", "title": 'XP', "description": "", "id": `${_p + command} xp` },
           { "header": "", "title": 'Stiker', "description": "", "id": `${_p + command} stiker` },
-          { "header": "", "title": 'Kerang Ajaib', "description": "", "id": `${_p + command} kerangajaib` },
-          { "header": "", "title": 'Quotes', "description": "", "id": `${_p + command} quotes` },
+          { "header": "", "title": 'Kerang Ajaib', "description": "", "id": `${_p + command} keranga` },
           { "header": "", "title": 'Grup', "description": "", "id": `${_p + command} grup` },
-          { "header": "", "title": 'Premium', "description": "", "id": `${_p + command} premium` },
           { "header": "", "title": 'Internet', "description": "", "id": `${_p + command} internet` },
-          { "header": "", "title": 'Anonymous', "description": "", "id": `${_p + command} anonymous` },
-          { "header": "", "title": 'Nulis & Logo', "description": "", "id": `${_p + command} nulis` },
           { "header": "", "title": 'Downloader', "description": "", "id": `${_p + command} downloader` },
           { "header": "", "title": 'Tools', "description": "", "id": `${_p + command} tools` },
           { "header": "", "title": 'Fun', "description": "", "id": `${_p + command} fun`},
-          { "header": "", "title": 'Database', "description": "", "id": `${_p + command} database` },
-          { "header": "", "title": 'Vote & Absen', "description": "", "id": `${_p + command} vote` },
-          { "header": "", "title": "Al-Qur\'an", "description": "", "id": `${_p + command} quran` },
-          { "header": "", "title": 'Pengubah Suara', "description": "", "id": `${_p + command} audio` },
-          { "header": "", "title": 'Jadi Bot', "description": "", "id": `${_p + command} jadibot` },
           { "header": "", "title": 'Info', "description": "", "id": `${_p +command} info` },
           { "header": "", "title": 'Tanpa Kategori', "description": "", "id": `${_p + command} tanpakategori` },
           { "header": "", "title": 'Owner', "description": "", "id": `${_p + command} owner` },
@@ -335,8 +293,7 @@ JSON.stringify({
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const media = await baileys.prepareWAMessageMedia({ document: (await conn.getFile(thumb)).data, fileName: namedoc, mimetype: doc, fileLength: global.fsizedoc, pageCount: global.fpagedoc }, { upload: conn.waUploadToServer })
-    let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://i.ibb.co/gS0XrNc/avatar-contact.png')
-    const msg = {
+const msg = {
 		viewOnceMessage: {
 			message: {
 				messageContextInfo: {
@@ -369,25 +326,11 @@ JSON.stringify({
 						],
 					},
 					contextInfo: {
-    forwardingScore: 12,
-    isForwarded: true,
-    quotedMessage: m.message,
+						quotedMessage: m.message,
 						participant: m.sender,
-						...m.key,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363294442288954@newsletter',
-      serverMessageId: null,
-      newsletterName: namebot,
-    },
-				externalAdReply: {
-                title: `ʜᴏᴡ ᴀʀᴇ ʏᴏᴜ ᴛᴏᴅᴀʏ`,
-                body: null,
-                mediaType: 1,
-                thumbnail: await (await fetch(pp)).buffer(),
-                sourceUrl: sgh,
-                        }
-		           	}
-				}
+						...m.key
+					}
+				},
 			},
 		},
 	};
@@ -399,7 +342,7 @@ JSON.stringify({
 }
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
-handler.command = /^(m(enu)?|help)$/i
+handler.command = /^(m(enu2)?|help2)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
@@ -439,4 +382,4 @@ function ucapan() {
     res = "Selamat malam"
   }
   return res
-}
+	}
