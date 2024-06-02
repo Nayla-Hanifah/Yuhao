@@ -39,6 +39,8 @@ node index.js
 2. Connect the bot to your WhatsApp account
 3. Start interacting with the bot and explore its features
 
+---
+
 ## Use Pairing Code
 ```
 node index.js --pairing
