@@ -1,6 +1,5 @@
 let ytdl = require('ytdl-core');
 let fs = require('fs');
-let ffmpeg = require('fluent-ffmpeg');
 let search = require ('yt-search');
 
 let handler = async (m, { conn, text }) => {
@@ -19,13 +18,18 @@ let handler = async (m, { conn, text }) => {
     let description = results.videos[0].description;
     let seconds = duration % 60;
     let durationText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;       
-    let audio = ytdl(videoId, { quality: 'highestaudio' });
-    let inputFilePath = './tmp/' + title + '.webm';
-    let outputFilePath = './tmp/' + title + '.mp3';
     let viewsFormatted = formatViews(views);
-    let infoText = `◦ *Title*: ${title}\n◦ *Duration*: ${durationText}\n◦ *Upload*: ${uploadDate}\n◦ *Views*: ${viewsFormatted}\n◦ *ID*: ${videoId}\n◦ *Description*: ${description}\n◦ *URL*: ${url}
+    //let infoText = `◦ *Title*: ${title}\n◦ *Duration*: ${durationText}\n◦ *Upload*: ${uploadDate}\n◦ *Views*: ${viewsFormatted}\n◦ *ID*: ${videoId}\n◦ *Description*: ${description}\n◦ *URL*: ${url}
+    let infoText =  `╭──── 〔 Y O U T U B E 〕 ─⬣
+⬡ Title: ${title}
+⬡ Duration: ${durationText}
+⬡ Views: ${viewsFormatted}
+⬡ Upload: ${uploadDate}
+⬡ Link: ${url}
+╰────────⬣`;
+    
   `;
-    const pesan = conn.relayMessage(m.chat, {
+     /*conn.relayMessage(m.chat, {
                 extendedTextMessage:{
                 text: infoText, 
                 contextInfo: {
@@ -39,41 +43,53 @@ let handler = async (m, { conn, text }) => {
                         sourceUrl: url
                     }
                 }, mentions: [m.sender]
-}}, {});
-
-    audio.pipe(fs.createWriteStream(inputFilePath)).on('finish', async () => {
-      ffmpeg(inputFilePath)
-        .toFormat('mp3')
-        .on('end', async () => {
-          let buffer = fs.readFileSync(outputFilePath);                    
-          conn.sendMessage(m.chat, {         
-                audio: buffer,
-                mimetype: 'audio/mpeg',
-                contextInfo: {
-                    externalAdReply: {
-                        title: title,
-                        body: "",
-                        thumbnailUrl: thumbnailUrl,
-                        sourceUrl: url,
-                        mediaType: 1,
-                        showAdAttribution: true,
-                        renderLargerThumbnail: true
-                    }
-                }
-            }, {
-                quoted: m
-            });
-          fs.unlinkSync(inputFilePath);
-          fs.unlinkSync(outputFilePath);
-        })
-        .on('error', (err) => {
-          console.log(err);
-          m.reply(`There was an error converting the audio: ${err.message}`);
-          fs.unlinkSync(inputFilePath);
-          fs.unlinkSync(outputFilePath);
-        })
-        .save(outputFilePath);
-    });
+}}, {});*/
+const media = await baileysprepareWAMessageMedia({ image: (await conn.getFile(thumbnailUrl)).data }, { upload: conn.waUploadToServer })
+const msg = {
+		viewOnceMessage: {
+			message: {
+				messageContextInfo: {
+					deviceListMetadata: {},
+					deviceListMetadataVersion: 2,
+				},
+				interactiveMessage: {
+					body: {
+						text: infoText,
+					},
+					footer: {
+						text: '_Audio sedang dikirim..._',
+					},
+					header: {
+						title: '',
+						subtitle: '',
+						hasMediaAttachment: true,
+						...media
+					},
+					nativeFlowMessage: {
+						buttons: [
+							{
+              "name": "quick_reply",
+              "buttonParamsJson":
+JSON.stringify({
+ "display_text": "VIDEO 📺",
+"id": ".ytv " + url
+              })              
+            },
+            	{
+              "name": "quick_reply",
+              "buttonParamsJson":
+JSON.stringify({
+ "display_text": "AUDIO 🎧",
+"id": ".yta " + url
+              })              
+            } //snd
+						],
+					},
+				},
+			},
+		},
+	};
+	conn.relayMessage(m.chat, msg, { });
   } catch (e) {
     console.log(e);
     m.reply(`An error occurred while searching for the song: ${e.message}`);
@@ -95,4 +111,4 @@ function formatViews(views) {
   } else {
     return views.toString();
   }
-}
+                            }
