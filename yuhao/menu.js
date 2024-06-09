@@ -339,8 +339,8 @@ JSON.stringify({
       newsletterName: namebot,
     },
 				externalAdReply: {
-                title: `${global.ucapan}`,
-                body: wm,
+                title: 'ʜᴏᴡ ᴀʀᴇ ʏᴏᴜ ᴛᴏᴅᴀʏ?',
+                body: null,
                 mediaType: 1,
                 thumbnail: await (await fetch(pp)).buffer(),
                 sourceUrl: sgh,
