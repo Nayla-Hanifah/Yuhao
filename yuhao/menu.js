@@ -293,7 +293,9 @@ JSON.stringify({
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const media = await baileys.prepareWAMessageMedia({ document: (await conn.getFile(thumb)).data, fileName: namedoc, mimetype: doc, fileLength: global.fsizedoc, pageCount: global.fpagedoc }, { upload: conn.waUploadToServer })
-const msg = {
+    const media = await baileys.prepareWAMessageMedia({ document: (await conn.getFile(thumb)).data, fileName: namedoc, mimetype: doc, fileLength: global.fsizedoc, pageCount: global.fpagedoc }, { upload: conn.waUploadToServer })
+    let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://i.ibb.co/gS0XrNc/avatar-contact.png')
+    const msg = {
 		viewOnceMessage: {
 			message: {
 				messageContextInfo: {
@@ -326,11 +328,25 @@ JSON.stringify({
 						],
 					},
 					contextInfo: {
-						quotedMessage: m.message,
+    forwardingScore: 12,
+    isForwarded: true,
+    quotedMessage: m.message,
 						participant: m.sender,
-						...m.key
-					}
-				},
+						...m.key,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: '120363294442288954@newsletter',
+      serverMessageId: null,
+      newsletterName: namebot,
+    },
+				externalAdReply: {
+                title: `${global.ucapan}`,
+                body: wm,
+                mediaType: 1,
+                thumbnail: await (await fetch(pp)).buffer(),
+                sourceUrl: sgh,
+                        }
+		           	}
+				}
 			},
 		},
 	};
