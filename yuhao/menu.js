@@ -292,7 +292,6 @@ JSON.stringify({
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    //const media = await baileys.prepareWAMessageMedia({ document: (await conn.getFile(thumb)).data, fileName: namedoc, mimetype: doc, fileLength: global.fsizedoc, pageCount: global.fpagedoc }, { upload: conn.waUploadToServer })
     const media = await baileys.prepareWAMessageMedia({ document: (await conn.getFile(thumb)).data, fileName: namedoc, mimetype: doc, fileLength: global.fsizedoc, pageCount: global.fpagedoc }, { upload: conn.waUploadToServer })
     let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://i.ibb.co/gS0XrNc/avatar-contact.png')
     const msg = {
